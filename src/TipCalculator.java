@@ -14,16 +14,28 @@ public class TipCalculator {
         final double INTPERCENTTODECIMAL = tipPercentage / 100.0;
         scan.nextLine();
 
-        //double bill = item ;
         System.out.print("Enter a cost in dollars and cents! (-1 to end) ");
         double item = scan.nextDouble();
+        double bill = item;
         while (item != -1) {
+
             System.out.print("Enter a cost in dollars and cents! (-1 to end) ");
             item = scan.nextDouble();
+            bill = bill + item;
+         if (item == -1) {
+            bill = 1 + bill;
+         }
         }
         scan.nextLine();
-
         System.out.println("------------------------");
-        //System.out.print("Total Bill Before Tip: " + bill);
+        System.out.println("Total bill before tip: " + bill);
+        System.out.println("Tip percentage: " + tipPercentage);
+        System.out.println("Total tip:" + (bill * INTPERCENTTODECIMAL));
+        System.out.println("Total bill with tip: " + (bill + (INTPERCENTTODECIMAL * bill)));
+        System.out.println("Per person cost before tip: " + (bill / members));
+        System.out.println("Tip per person: " + (INTPERCENTTODECIMAL * bill) / members);
+        System.out.println("Total cost per person:" + (bill + (INTPERCENTTODECIMAL * bill)) / members);
+
+
     }
 }
